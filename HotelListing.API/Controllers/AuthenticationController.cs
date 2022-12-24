@@ -43,7 +43,13 @@ public class AuthenticationController : ControllerBase
 		}
 		catch (Exception e)
 		{
-			_logger.LogError(e, "Error occurred in {RegisterName} - User Registration attempt for {UserDOEmail}", nameof(Register), userDO.Email);
+			_logger.LogError
+				(
+					e,
+					"Error occurred in {RegisterName} - User Registration attempt for {UserDOEmail}",
+					nameof(Register),
+					userDO.Email
+				);
 			return Problem($"Something went wrong in the {nameof(Register)}", statusCode: 500);
 		}
 	}

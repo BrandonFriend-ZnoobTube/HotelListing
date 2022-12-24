@@ -41,7 +41,8 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
 	public async Task<List<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
 
-	public async Task<List<TResult>> GetAllAsync<TResult>() => await _context.Set<T>().ProjectTo<TResult>(_mapper.ConfigurationProvider).ToListAsync().ConfigureAwait(false);
+	public async Task<List<TResult>> GetAllAsync<TResult>() =>
+		await _context.Set<T>().ProjectTo<TResult>(_mapper.ConfigurationProvider).ToListAsync().ConfigureAwait(false);
 
 	public async Task<PagedResult<TResult>> GetAllAsync<TResult>(QueryParameters queryParameters)
 	{
